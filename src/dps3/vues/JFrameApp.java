@@ -7,8 +7,11 @@ import java.awt.Toolkit;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 import dps3.App;
@@ -17,6 +20,9 @@ import dps3.vues.partielles.main.JPanelAccueil;
 
 public class JFrameApp extends JFrame {
     public static final String WINDOW_TITLE = App.NAME;
+
+    private ArrayList<JComponent> vuesActives = new ArrayList<>();
+
     public JFrameApp() {
         super(WINDOW_TITLE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,7 +37,12 @@ public class JFrameApp extends JFrame {
         setCentered();
         
         // pour permettre de cacher la sidebar en fonction de la taille de la fenêtre
-        addComponentListener(new JFrameAppListener());
+        // JFrameAppListener est une classe interne à JFrameApp (voir plus bas)
+        addComponentListener(new JFrameAppListener()); 
+    }
+
+    public List<JComponent> getVuesActives() {
+        return vuesActives;
     }
 
 
@@ -55,6 +66,8 @@ public class JFrameApp extends JFrame {
 
     
     public void reset() {
+        this.vuesActives.clear();
+
         // nota : le contentpane est un panel qui est par défaut dans un jframe
         getContentPane().removeAll();
 
@@ -63,16 +76,32 @@ public class JFrameApp extends JFrame {
         getContentPane().repaint();
     }
 
+
     public void afficher() {
         setVisible(true);
     }
 
+
     public void afficherConnexion() {
         reset();
-        add(new JPanelConnexion(), BorderLayout.CENTER);
+        JPanelConnexion jp = new JPanelConnexion();
+        vuesActives.add(jp);
+        add(jp, BorderLayout.CENTER);
     }
 
-    
+    public void afficherAccueil() {
+        reset();
+        CDecideur ctl = CDecideur.getOrCreateFrom(App.getDecideur());
+        JPanelSideBar jp = new JPanelSideBar(ctl);
+        vuesActives.add(jp);
+        add(jp, BorderLayout.WEST);
+
+        // Groupe groupe = new Groupe("Un Nouveau groupe de plus qui fait vachement chier le monde j'en ai marre");
+        // JScrollPaneMain mainPanel = new JScrollPaneMain(new JPanelGrandGroupe(groupe));
+        JScrollPaneMain mainPanel = new JScrollPaneMain(new JPanelAccueil());
+        vuesActives.add(mainPanel);
+        add(mainPanel, BorderLayout.CENTER);
+    }
 
 
         
@@ -117,11 +146,11 @@ public class JFrameApp extends JFrame {
         @Override
         public void componentMoved(ComponentEvent e) {
         }
-    
+        
         @Override
         public void componentShown(ComponentEvent e) {
         }
-    
+        
         @Override
         public void componentHidden(ComponentEvent e) {
         }

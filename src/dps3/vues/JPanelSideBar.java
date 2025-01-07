@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import dps3.App;
 import dps3.controleurs.CDecideur;
-import dps3.utils.Layouts.GBL;
+import dps3.utils.ui.GBL;
 import dps3.vues.interfaces.IVue;
 import dps3.vues.interfaces.IVueControlee;
 import dps3.vues.partielles.sideBar.JPanelQuickNavBar;

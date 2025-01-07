@@ -1,8 +1,6 @@
 package dps3.modeles;
 
-import dps3.modeles.interfaces.IModele;
-
-public class Groupe implements IModele {
+public class Groupe extends Modele {
 	private String nomGroupe; 
 	// ArrayList<Vote> votes;
 	int BudgetAlloue;

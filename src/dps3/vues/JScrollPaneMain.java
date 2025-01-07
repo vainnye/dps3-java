@@ -7,20 +7,21 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import dps3.utils.Layouts.GBL;
+import dps3.utils.ui.GBL;
 import dps3.vues.partielles.reutilisables.JPanelRound;
 
 public class JScrollPaneMain extends JScrollPane {
     private JPanelRound jp_centered;
+    private JPanel viewportViewPanel;
 
     public JScrollPaneMain(JPanelRound panel) {
         super(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         jp_centered = panel;
 
-        JPanel vpvPanel = new JPanel(new GridBagLayout());
-        setViewportView(vpvPanel);
+        viewportViewPanel = new JPanel(new GridBagLayout());
+        setViewportView(viewportViewPanel);
         
-        vpvPanel.setBackground(Color.WHITE);
+        viewportViewPanel.setBackground(Color.WHITE);
         
         setBorder(null);
 
@@ -32,10 +33,19 @@ public class JScrollPaneMain extends JScrollPane {
         c.weightx = 1;
         c.weighty = 1;
         
-        vpvPanel.add(jp_centered, c);
+        viewportViewPanel.add(jp_centered, c);
     }
 
-    // public void setJPanelCentered(JPanelRound panel) {
-    //     jp_centered = panel;
-    // }
+    public void setJPanelCentered(JPanelRound newPanel) {
+        GridBagConstraints c;
+        c = (GridBagConstraints)((GridBagLayout)viewportViewPanel.getLayout()).getConstraints(jp_centered).clone();
+        viewportViewPanel.remove(jp_centered);
+
+        jp_centered = newPanel;
+        viewportViewPanel.add(newPanel, c);
+        
+        // EXTRÊMEMENT IMPORTANT POUR QUE L'INTERFACE SE METTE À JOUR
+        revalidate();
+        repaint();
+    }
 }

@@ -5,29 +5,38 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.HierarchyEvent;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import dps3.App;
-import dps3.modeles.Groupe;
-import dps3.utils.Layouts.GBL;
+import dps3.controleurs.CGroupe;
+import dps3.utils.ui.GBL;
+import dps3.vues.interfaces.IVueRemplacable;
 import dps3.vues.partielles.reutilisables.JButtonRound;
 import dps3.vues.partielles.reutilisables.JPanelRound;
 
-public class JPanelGrandGroupe extends JPanelRound {
+public class JPanelGrandGroupe extends JPanelRound implements IVueRemplacable {
     // TODO : peut-être changer pour JTextPane plutôt que JTextArea, pour des raisons de mise en forme de texte, de liens, d'affichage, etc
-    private JTextArea jta_nomGroupe;
+    private JTextArea jta_nomGroupe = new JTextArea();
     private JPanelRound jp_vue;
 
-    public JPanelGrandGroupe(Groupe groupe) {
+    private CGroupe controleur;
+
+    public JPanelGrandGroupe(CGroupe ctl) {
+        controleur = ctl;
+        controleur.ajouterVue(this);
+        addHierarchyListener(this);
+        
+
         setLayout(new GridBagLayout());
         GridBagConstraints c;
 
         setBackground(App.COLOR_GREEN);
         setRounds(40);
 
-        jta_nomGroupe = new JTextArea(groupe.getNomGroupe());
+        update();
         jta_nomGroupe.setOpaque(false);
         jta_nomGroupe.setLineWrap(true);
         jta_nomGroupe.setWrapStyleWord(true);
@@ -81,5 +90,21 @@ public class JPanelGrandGroupe extends JPanelRound {
         c.weighty = 1;
         c.fill = GridBagConstraints.BOTH;
         add(jp_vue, c);
+    }
+
+    // implémentation de IVueControlee
+    @Override
+    public void hierarchyChanged(HierarchyEvent e) {
+        if(e.getChangeFlags() == HierarchyEvent.PARENT_CHANGED) {
+            if(this.getParent() == null)
+                this.controleur.retirerVue(this);
+            else
+                this.controleur.ajouterVue(this);
+        }
+    }
+
+    @Override
+    public void update() {
+        jta_nomGroupe.setText(controleur.getModele().getNomGroupe());
     }
 }

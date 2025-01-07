@@ -8,7 +8,17 @@ public interface IVueRemplacable extends IVueControlee{
 
     // son constructeur doit inclure un controleur dans ses paramètres
 
-    public void replaceBy(IVueRemplacable vue);
+
+    /*
+     * au final je me débrouille sans la méthode replaceBy(IVueRemplacable vue)
+     * c'est plus simple
+     * dans les dtous les cas c'est brouillon
+     */
+    // public void replaceBy(IVueRemplacable vue);
+
+
+
+
 
     // méthode héritée de IVueControlee permettant de savoir si la vue a été retirée de son parent
     // cet méthode doit être implémentée comme suit

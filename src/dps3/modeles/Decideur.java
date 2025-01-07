@@ -8,12 +8,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.w3c.dom.CDATASection;
+
 import dps3.App;
+import dps3.controleurs.CDecideur;
+import dps3.controleurs.interfaces.IControleur;
 import dps3.modeles.interfaces.IModele;
 
 // la classe du décideur (l'utilisateur courant de l'app)
 // 
-public class Decideur implements IModele {
+public class Decideur extends Modele {
     public static final String DFT_PFP_PATH = App.DFT_PFP_PATH;
     private int idUtilisateur;
     private String pseudo;
@@ -30,16 +34,15 @@ public class Decideur implements IModele {
         groupesDeDecision = grps;
     }
     
-
     
-    public Decideur createDecideur() {
+    public static Decideur createDecideur() {
         Decideur decideur = new Decideur();
         
         // TODO : empêcher la connexion de l'utilisateur à l'app s'il n'est décideur d'aucun des groupes dont il est membre 
         // TODO : fetch les données JSON dans les attributs de Decideur
         String lienPhotoProfil; // lien récuéré via l'API REST
         setLienPhotoProfil(lienPhotoProfil);
-
+        
         // decideur.idUtilisateur = 
         // decideur.pseudo = 
         // decideur.nom = 
@@ -51,7 +54,7 @@ public class Decideur implements IModele {
         // decideur.groupesDeDecision =
         // return decideur;
     }
-
+    
     public void setLienPhotoProfil(String lienPhotoProfil) {
         // "String lienPhotoProfil" lien récupéré via l'API REST
         try {

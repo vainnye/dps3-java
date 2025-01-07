@@ -1,4 +1,4 @@
-package dps3.utils.Layouts;
+package dps3.utils.ui;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;

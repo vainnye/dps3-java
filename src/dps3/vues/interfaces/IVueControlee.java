@@ -3,6 +3,9 @@ package dps3.vues.interfaces;
 import java.awt.event.HierarchyListener;
 import java.awt.event.HierarchyEvent;
 
+// ---------------------------------------------------------------------------
+// Un très bon exemple d'implémentation de IVueControlee est JPanelPetitGroupe
+// ---------------------------------------------------------------------------
 public interface IVueControlee extends IVue, HierarchyListener {
     // contient un attribut :
     // private CModele controleur;

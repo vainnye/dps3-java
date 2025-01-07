@@ -1,14 +1,18 @@
 package dps3.controleurs;
 
-import dps3.controleurs.abstraits.CModeleAbstrait;
-import dps3.modeles.Vote;
+import java.util.ArrayList;
 
-public class CVote extends CModeleAbstrait {
-    public CVote(Vote modele) {
-        super(modele);
+import dps3.modeles.Vote;
+import dps3.vues.interfaces.IVueControlee;
+
+public class CVote extends Controleur {
+    CVote(Vote modele) {
+        this.modele = modele;
+        vues = new ArrayList<IVueControlee>();
     }
-    
+
+    @Override
     public Vote getModele() {
-        return (Vote)super.getModele();
+        return (Vote) super.getModele();
     }
 }

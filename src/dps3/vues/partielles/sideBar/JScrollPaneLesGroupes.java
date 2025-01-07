@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import dps3.controleurs.Controleur;
 import dps3.modeles.Decideur;
 import dps3.modeles.Groupe;
-import dps3.utils.Layouts.GBL;
+import dps3.utils.ui.GBL;
 import dps3.vues.interfaces.IVue;
 
 public class JScrollPaneLesGroupes extends JScrollPane implements IVue {
@@ -62,8 +63,11 @@ public class JScrollPaneLesGroupes extends JScrollPane implements IVue {
         
         for (int i=0; i<groupes.size(); i++) {
             c.gridy = i;
-            String nomGroupe = groupes.get(i).getNomGroupe();
-            JPanelPetitGroupe jp_groupe = new JPanelPetitGroupe(nomGroupe);
+            
+            JPanelPetitGroupe jp_groupe = new JPanelPetitGroupe(
+                Controleur.getOrCreateFrom(groupes.get(i))
+                );
+            
             jp_lesGroupes.add(jp_groupe, c);
         }
 

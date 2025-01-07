@@ -1,4 +1,4 @@
-package dps3.utils;
+package dps3.utils.ui;
 
 import javax.swing.JComponent;
 

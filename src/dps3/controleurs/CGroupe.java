@@ -1,14 +1,18 @@
 package dps3.controleurs;
 
-import dps3.controleurs.abstraits.CModeleAbstrait;
-import dps3.modeles.Groupe;
+import java.util.ArrayList;
 
-public class CGroupe extends CModeleAbstrait {
-    public CGroupe(Groupe modele) {
-        super(modele);
+import dps3.modeles.Groupe;
+import dps3.vues.interfaces.IVueControlee;
+
+public class CGroupe extends Controleur {
+    CGroupe(Groupe modele) {
+        this.modele = modele;
+        vues = new ArrayList<IVueControlee>();
     }
-    
+
+    @Override
     public Groupe getModele() {
-        return (Groupe)super.getModele();
+        return (Groupe) super.getModele();
     }
 }

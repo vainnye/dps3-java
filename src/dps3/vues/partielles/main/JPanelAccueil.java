@@ -7,8 +7,8 @@ import java.awt.GridBagLayout;
 import javax.swing.JTextArea;
 
 import dps3.App;
-import dps3.utils.SwingTB;
-import dps3.utils.Layouts.GBL;
+import dps3.utils.ui.GBL;
+import dps3.utils.ui.SwingTB;
 import dps3.vues.partielles.reutilisables.JPanelRound;
 
 public class JPanelAccueil extends JPanelRound {

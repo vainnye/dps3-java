@@ -1,14 +1,19 @@
 package dps3.controleurs;
 
-import dps3.controleurs.abstraits.CModeleAbstrait;
+import java.util.ArrayList;
+
 import dps3.modeles.Decideur;
+import dps3.vues.interfaces.IVueControlee;
 
-public class CDecideur extends CModeleAbstrait {
-    public CDecideur(Decideur modele) {
-        super(modele);
+public class CDecideur extends Controleur {
+    CDecideur(Decideur modele) {
+        this.modele = modele;
+        vues = new ArrayList<IVueControlee>();
     }
 
+    @Override
     public Decideur getModele() {
-        return (Decideur)super.getModele();
+        return (Decideur) super.getModele();
     }
+
 }

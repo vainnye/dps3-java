@@ -10,6 +10,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import dps3.config.Myfonts;
 import dps3.controleurs.CApp;
+import dps3.controleurs.CDecideur;
+import dps3.controleurs.Controleur;
 import dps3.modeles.Decideur;
 import dps3.modeles.Groupe;
 
@@ -53,20 +55,24 @@ public class App {
 
         App.setDecideur(new Decideur("https://chat-gpt.org/assets/img/chatgpt.png", groupes));
 
+        // ajuster tous les composants au Look & Feel du système d'exloitation actuel
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            ex.printStackTrace();
+        }
         
+        CDecideur cd = Controleur.getOrCreateFrom(decideur);
+        
+
         // parce que JFrame n'est pas thread safe, 
         // il faut utiliser le tricks suivant pour tout run dans le même thread
+        // (pour que tout s'affiche en même temps)
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-                    ex.printStackTrace();
-                }
-                
-                
                 CApp.lancerApp();
+                
             }
         });
     }

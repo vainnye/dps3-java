@@ -4,7 +4,7 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 
-import dps3.utils.Layouts.GBL;
+import dps3.utils.ui.GBL;
 import dps3.vues.partielles.connexion.JPanelFormConnexion;
 
 public class JPanelConnexion extends JPanel {

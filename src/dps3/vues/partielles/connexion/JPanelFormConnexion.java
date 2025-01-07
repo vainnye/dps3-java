@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import dps3.App;
 import dps3.config.Connexion;
 import dps3.controleurs.CApp;
-import dps3.utils.Layouts.GBL;
+import dps3.utils.ui.GBL;
 import dps3.vues.partielles.reutilisables.JButtonRound;
 import dps3.vues.partielles.reutilisables.JPanelRound;
 
