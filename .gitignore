@@ -30,3 +30,7 @@ replay_pid*
 
 # executables et fichiers binaires
 bin/
+
+
+# Forcer l'ajout des librairies externes
+!lib/*

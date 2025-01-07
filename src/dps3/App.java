@@ -10,8 +10,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import dps3.config.Myfonts;
 import dps3.controleurs.CApp;
-import dps3.controleurs.CDecideur;
-import dps3.controleurs.Controleur;
 import dps3.modeles.Decideur;
 import dps3.modeles.Groupe;
 
@@ -61,9 +59,6 @@ public class App {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             ex.printStackTrace();
         }
-        
-        CDecideur cd = Controleur.getOrCreateFrom(decideur);
-        
 
         // parce que JFrame n'est pas thread safe, 
         // il faut utiliser le tricks suivant pour tout run dans le même thread

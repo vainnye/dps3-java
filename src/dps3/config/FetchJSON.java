@@ -1,13 +1,11 @@
 package dps3.config;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Iterator;
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
+
 import org.json.JSONObject; 
 
 

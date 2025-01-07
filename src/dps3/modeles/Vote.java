@@ -1,18 +1,16 @@
 package dps3.modeles;
 
-import dps3.config.FetchJSON;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Random;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import java.util.Random;
+
+import dps3.config.FetchJSON;
 
 public class Vote extends Modele {
 	private ArrayList<Choix> lesChoix;

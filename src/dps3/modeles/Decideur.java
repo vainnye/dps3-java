@@ -1,19 +1,12 @@
 package dps3.modeles;
 
-import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-
-import org.w3c.dom.CDATASection;
 
 import dps3.App;
-import dps3.controleurs.CDecideur;
-import dps3.controleurs.interfaces.IControleur;
-import dps3.modeles.interfaces.IModele;
 
 // la classe du décideur (l'utilisateur courant de l'app)
 // 
