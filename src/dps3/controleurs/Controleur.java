@@ -59,4 +59,9 @@ public class Controleur implements IControleur {
         vues.removeIf(v -> (v == vue));
     }
 
+    @Override
+    public void updateLesVues() {
+        vues.forEach(v -> v.update());
+    }
+
 }
