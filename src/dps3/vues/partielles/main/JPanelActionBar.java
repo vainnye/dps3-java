@@ -13,10 +13,10 @@ public class JPanelActionBar extends JPanel {
     
     public JPanelActionBar(Opt option) {
         switch (option) {
-            case Opt.BOUTONS_VUES:
+            case BOUTONS_VUES:
                 
                 break;
-            case Opt.BOUTON_RETOUR:
+            case BOUTON_RETOUR:
                 
                 break;
             default: // n'essayez pas de cast un int en Opt, s.v.p.

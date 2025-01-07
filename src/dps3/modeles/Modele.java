@@ -9,7 +9,7 @@ public class Modele implements IModele {
     protected Controleur controleur;
     
     
-    // cette méthode est inutile toute seule car il n'est pas possible de créer un controlleur depuis une autre classe qu'un controlleur (en passant par le constructeur)
+    // cette méthode est inutile toute seule car il n'est pas possible de créer un controleur depuis une autre classe qu'un controleur (en passant par le constructeur)
     // car le constructeur de Controleur est protected
     // cette méthode fonctionne de pair avec IControleurModele.getOrCreateFrom(Modele modele)
     // TLDR: pour comprendre son utilité allez voir IControleurModele.getOrCreateFrom(Modele modele)

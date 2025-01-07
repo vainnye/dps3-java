@@ -36,13 +36,11 @@ public class Decideur extends Modele {
     
     
     public static Decideur createDecideur() {
-        Decideur decideur = new Decideur();
-        
         // TODO : empêcher la connexion de l'utilisateur à l'app s'il n'est décideur d'aucun des groupes dont il est membre 
         // TODO : fetch les données JSON dans les attributs de Decideur
-        String lienPhotoProfil; // lien récuéré via l'API REST
-        setLienPhotoProfil(lienPhotoProfil);
-        
+        String lienPhotoProfil = ""; // lien récuéré via l'API REST
+ 
+        Decideur decideur = new Decideur(lienPhotoProfil, null);
         // decideur.idUtilisateur = 
         // decideur.pseudo = 
         // decideur.nom = 
@@ -52,7 +50,7 @@ public class Decideur extends Modele {
         // TODO : créer un objet Groupe pour chaque groupe dont le Decideur est décisionnaire et l'ajouter à groupeDeDecision
         
         // decideur.groupesDeDecision =
-        // return decideur;
+        return decideur;
     }
     
     public void setLienPhotoProfil(String lienPhotoProfil) {
